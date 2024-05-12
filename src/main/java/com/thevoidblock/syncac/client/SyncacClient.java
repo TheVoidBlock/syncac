@@ -1,6 +1,6 @@
 package com.thevoidblock.syncac.client;
 
-import com.thevoidblock.syncac.AutoClicker;
+import com.thevoidblock.syncac.util.AutoClicker;
 import com.thevoidblock.syncac.KeyBindings;
 import com.thevoidblock.syncac.Syncac;
 import net.fabricmc.api.ClientModInitializer;
@@ -12,8 +12,8 @@ public class SyncacClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
 
+        AutoClicker.registerAutoClickers();
         KeyBindings.registerModKeybindings();
-        AutoClicker.initializeAutoClicker();
 
         Syncac.LOGGER.info(String.format("clickity clack clack (%s client initialized)", Syncac.MOD_ID));
     }

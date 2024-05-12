@@ -24,7 +24,8 @@ public class GetCarpetLoggerInfo {
                 }
             }
         }
-        return -1;
+        if(group.equals("mspt")) return 50;
+        else return 20;
     }
 
     public static double getTPS() {
