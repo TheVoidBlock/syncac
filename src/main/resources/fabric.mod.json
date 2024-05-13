@@ -14,7 +14,7 @@
   },
   "license": "GPL-3.0",
   "icon": "assets/syncac/icon.png",
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
     "client": [
       "com.thevoidblock.syncac.client.SyncacClient"
