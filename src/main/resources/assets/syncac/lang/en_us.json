@@ -1,0 +1,28 @@
+{
+  "autoclicker.syncac.config": "Syncac Config",
+
+  "category.syncac.general": "General",
+  "category.syncac.attack": "Attack",
+  "category.syncac.use": "Use",
+
+
+  "option.syncac.general_active": "Enable Mod",
+
+
+  "option.syncac.attack_active": "Enable Attack",
+
+  "option.syncac.attack_interval": "Interval",
+  "tooltip.syncac.attack_interval": "Sets the delay between attacks (in ticks)",
+
+  "option.syncac.attack_sync": "Sync",
+  "tooltip.syncac.attack_sync": "Synchronizes the delay between attacks with Carpet Mod Log TPS in the player list Footer, in case the server is lagging/slowed down",
+
+
+  "option.syncac.use_active": "Enable Use",
+
+  "option.syncac.use_interval": "Interval",
+  "tooltip.syncac.use_interval": "Sets the delay between uses (in ticks)",
+
+  "option.syncac.use_sync": "Sync",
+  "tooltip.syncac.use_sync": "Synchronizes the delay between uses with Carpet Mod Log TPS in the player list Footer, in case the server is lagging/slowed down"
+}

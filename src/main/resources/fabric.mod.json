@@ -3,12 +3,14 @@
   "id": "syncac",
   "version": "${version}",
   "name": "Syncac",
-  "description": "Minecraft auto clicker mod, synchronizes clicks with Carpet Mod TPS logger.",
+  "description": "Minecraft auto clicker, synchronizes clicks with Carpet Mod TPS logger in the player list footer.",
   "authors": [
     "TheVoidBlcok"
   ],
   "contact": {
-    "repo": "https://github.com/void/syncac"
+    "sources": "https://github.com/thevoidblock/Syncac",
+    "homepage": "https://modrinth.com/mod/Syncac",
+    "issues": "https://github.com/thevoidblock/Syncac/issues"
   },
   "license": "GPL-3.0",
   "icon": "assets/syncac/icon.png",
@@ -19,6 +21,9 @@
     ],
     "main": [
       "com.thevoidblock.syncac.Syncac"
+    ],
+    "modmenu": [
+      "com.thevoidblock.syncac.gui.ModMenuIntegration"
     ]
   },
   "mixins": [

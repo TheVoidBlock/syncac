@@ -1,8 +1,7 @@
 package com.thevoidblock.syncac.util;
 
-import com.thevoidblock.syncac.settings.AutoClickerSetting;
-import com.thevoidblock.syncac.settings.AutoClickers;
-import com.thevoidblock.syncac.settings.ModSettings;
+import com.thevoidblock.syncac.config.*;
+import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
 import static com.thevoidblock.syncac.util.GetCarpetLoggerInfo.getTPS;
@@ -10,29 +9,31 @@ import static com.thevoidblock.syncac.util.GetCarpetLoggerInfo.getTPS;
 public class AutoClicker {
 
     public static void registerAutoClickers() {
-        AutoClicker.registerAutoClicker(AutoClickers.attackAutoClicker);
-        AutoClicker.registerAutoClicker(AutoClickers.useAutoClicker);
+        AutoClicker.registerAutoClicker(new AttackAutoClicker());
+        AutoClicker.registerAutoClicker(new UseAutoClicker());
     }
 
-    public static void registerAutoClicker(AutoClickerSetting setting) {
+    public static void registerAutoClicker(AutoClickerConfig clicker) {
 
         ClientTickEvents.END_CLIENT_TICK.register(
                 client -> {
-                    if (setting.active && ModSettings.isEnabled) {
 
-                        setting.syncCooldown = (int) Math.max(setting.cooldown*(20/getTPS()), setting.syncCooldown);
+                    clicker.syncInterval = clicker.getInterval();
 
-                        if (setting.timeElapsed >= setting.syncCooldown) {
+                    if (clicker.isEnabled() && AutoConfig.getConfigHolder(ModConfig.class).getConfig().MOD_ENABLED) {
 
-                            setting.action.run();
+                        if(clicker.isSync()) clicker.syncInterval = (int) Math.max(clicker.getInterval() *(20/getTPS()), clicker.syncInterval);
 
-                            setting.timeElapsed = 0;
-                            setting.syncCooldown = setting.cooldown;
+                        if (clicker.timeElapsed >= clicker.syncInterval) {
+
+                            clicker.run();
+                            clicker.timeElapsed = 0;
 
                         } else {
-                            setting.timeElapsed++;
+                            clicker.timeElapsed++;
                         }
                     }
+
                 }
         );
 
