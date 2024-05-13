@@ -1,4 +1,4 @@
-# Minecraft auto clicker 
+# Minecraft auto clicker [Modrinth](https://modrinth.com/mod/syncac)
 Synchronizes clicks with Carpet Mod TPS logger in the player list footer. This mod is good if you're running a laggy farm on a not so fast server and it's not working due to attack cooldowns being slower. Works in GUIs too!
 
 ### How to use:
