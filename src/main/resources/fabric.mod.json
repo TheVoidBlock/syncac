@@ -17,9 +17,6 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "com.thevoidblock.syncac.client.SyncacClient"
-    ],
-    "main": [
       "com.thevoidblock.syncac.Syncac"
     ],
     "modmenu": [

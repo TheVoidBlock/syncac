@@ -1,22 +1,26 @@
 package com.thevoidblock.syncac;
 
-import com.thevoidblock.syncac.config.ModConfig;
+import com.thevoidblock.syncac.util.AutoClicker;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
-import net.fabricmc.api.ModInitializer;
+import net.fabricmc.api.ClientModInitializer;
+import net.minecraft.client.MinecraftClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Syncac implements ModInitializer {
+public class Syncac implements ClientModInitializer {
     public static final String MOD_ID = "syncac";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    public static final MinecraftClient CLIENT = MinecraftClient.getInstance();
 
     @Override
-    public void onInitialize() {
+    public void onInitializeClient() {
 
-        AutoConfig.register(ModConfig.class, JanksonConfigSerializer::new);
-        LOGGER.info(AutoConfig.getConfigHolder(ModConfig.class).getConfig().toString());
+        AutoConfig.register(SyncacConfig.class, JanksonConfigSerializer::new);
 
-        LOGGER.info(String.format("clickity clack clack (%s initialized)", MOD_ID));
+        AutoClicker.registerAutoClickers();
+        KeyBindings.registerModKeybindings();
+
+        LOGGER.info(String.format("%s initialized!", MOD_ID));
     }
 }

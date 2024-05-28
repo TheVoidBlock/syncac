@@ -1,7 +1,6 @@
 package com.thevoidblock.syncac.gui;
 
-import com.thevoidblock.syncac.Syncac;
-import com.thevoidblock.syncac.config.ModConfig;
+import com.thevoidblock.syncac.SyncacConfig;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
@@ -9,24 +8,29 @@ import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 
+import static com.thevoidblock.syncac.Syncac.MOD_ID;
+
 public class ConfigScreen {
     public static Screen getConfigScreen(Screen parent) {
+        
+        SyncacConfig config = AutoConfig.getConfigHolder(SyncacConfig.class).getConfig();
+        
         ConfigBuilder builder = ConfigBuilder.create()
                 .setParentScreen(parent)
-                .setTitle(Text.translatable(String.format("autoclicker.%s.config", Syncac.MOD_ID)));
+                .setTitle(Text.translatable(String.format("autoclicker.%s.autoclicker", MOD_ID)));
 
-        builder.setSavingRunnable(() -> AutoConfig.getConfigHolder(ModConfig.class).save());
+        builder.setSavingRunnable(() -> AutoConfig.getConfigHolder(SyncacConfig.class).save());
 
         builder.setShouldListSmoothScroll(true);
 
         ConfigCategory generalCategory = builder.getOrCreateCategory(
-                Text.translatable(String.format("category.%s.general", Syncac.MOD_ID))
+                Text.translatable(String.format("category.%s.general", MOD_ID))
         );
         ConfigCategory attackCategory = builder.getOrCreateCategory(
-                Text.translatable(String.format("category.%s.attack", Syncac.MOD_ID))
+                Text.translatable(String.format("category.%s.attack", MOD_ID))
         );
         ConfigCategory useCategory = builder.getOrCreateCategory(
-                Text.translatable(String.format("category.%s.use", Syncac.MOD_ID))
+                Text.translatable(String.format("category.%s.use", MOD_ID))
         );
 
         ConfigEntryBuilder entryBuilder = builder.entryBuilder();
@@ -35,12 +39,12 @@ public class ConfigScreen {
         generalCategory.addEntry(
                 entryBuilder.startBooleanToggle(
                                 Text.translatable(
-                                        String.format("option.%s.general_active", Syncac.MOD_ID)
+                                        String.format("option.%s.general_active", MOD_ID)
                                 ),
-                                AutoConfig.getConfigHolder(ModConfig.class).getConfig().MOD_ENABLED
+                                config.MOD_ENABLED
                         )
                         .setDefaultValue(false)
-                        .setSaveConsumer(newValue -> AutoConfig.getConfigHolder(ModConfig.class).getConfig().MOD_ENABLED = newValue)
+                        .setSaveConsumer(newValue -> config.MOD_ENABLED = newValue)
                         .build()
         );
 
@@ -48,37 +52,37 @@ public class ConfigScreen {
         attackCategory.addEntry(
                 entryBuilder.startBooleanToggle(
                         Text.translatable(
-                                String.format("option.%s.attack_active", Syncac.MOD_ID)
+                                String.format("option.%s.attack_active", MOD_ID)
                         ),
-                        AutoConfig.getConfigHolder(ModConfig.class).getConfig().ATTACK_ENABLED
+                        config.ATTACK_ENABLED
                 )
                         .setDefaultValue(false)
-                        .setSaveConsumer(newValue -> AutoConfig.getConfigHolder(ModConfig.class).getConfig().ATTACK_ENABLED = newValue)
+                        .setSaveConsumer(newValue -> config.ATTACK_ENABLED = newValue)
                         .build()
         );
 
         attackCategory.addEntry(
                 entryBuilder.startIntField(
                         Text.translatable(
-                                String.format("option.%s.attack_interval", Syncac.MOD_ID)
-                        ), AutoConfig.getConfigHolder(ModConfig.class).getConfig().ATTACK_INTERVAL
+                                String.format("option.%s.attack_interval", MOD_ID)
+                        ), config.ATTACK_INTERVAL
                 )
                     .setDefaultValue(20)
-                    .setTooltip(Text.translatable(String.format("tooltip.%s.attack_interval", Syncac.MOD_ID)))
-                    .setSaveConsumer(newValue -> AutoConfig.getConfigHolder(ModConfig.class).getConfig().ATTACK_INTERVAL = newValue)
+                    .setTooltip(Text.translatable(String.format("tooltip.%s.attack_interval", MOD_ID)))
+                    .setSaveConsumer(newValue -> config.ATTACK_INTERVAL = newValue)
                     .build()
         );
 
         attackCategory.addEntry(
                 entryBuilder.startBooleanToggle(
                                 Text.translatable(
-                                        String.format("option.%s.attack_sync", Syncac.MOD_ID)
+                                        String.format("option.%s.attack_sync", MOD_ID)
                                 ),
-                                AutoConfig.getConfigHolder(ModConfig.class).getConfig().ATTACK_SYNC_ENABLED
+                                config.ATTACK_SYNC_ENABLED
                         )
                         .setDefaultValue(true)
-                        .setTooltip(Text.translatable(String.format("tooltip.%s.attack_sync", Syncac.MOD_ID)))
-                        .setSaveConsumer(newValue -> AutoConfig.getConfigHolder(ModConfig.class).getConfig().ATTACK_SYNC_ENABLED = newValue)
+                        .setTooltip(Text.translatable(String.format("tooltip.%s.attack_sync", MOD_ID)))
+                        .setSaveConsumer(newValue -> config.ATTACK_SYNC_ENABLED = newValue)
                         .build()
         );
 
@@ -86,37 +90,37 @@ public class ConfigScreen {
         useCategory.addEntry(
                 entryBuilder.startBooleanToggle(
                                 Text.translatable(
-                                        String.format("option.%s.use_active", Syncac.MOD_ID)
+                                        String.format("option.%s.use_active", MOD_ID)
                                 ),
-                                AutoConfig.getConfigHolder(ModConfig.class).getConfig().USE_ENABLED
+                                config.USE_ENABLED
                         )
                         .setDefaultValue(false)
-                        .setSaveConsumer(newValue -> AutoConfig.getConfigHolder(ModConfig.class).getConfig().USE_ENABLED = newValue)
+                        .setSaveConsumer(newValue -> config.USE_ENABLED = newValue)
                         .build()
         );
 
         useCategory.addEntry(
                 entryBuilder.startIntField(
                                 Text.translatable(
-                                        String.format("option.%s.use_interval", Syncac.MOD_ID)
-                                ), AutoConfig.getConfigHolder(ModConfig.class).getConfig().USE_INTERVAL
+                                        String.format("option.%s.use_interval", MOD_ID)
+                                ), config.USE_INTERVAL
                         )
                         .setDefaultValue(20)
-                        .setTooltip(Text.translatable(String.format("tooltip.%s.use_interval", Syncac.MOD_ID)))
-                        .setSaveConsumer(newValue -> AutoConfig.getConfigHolder(ModConfig.class).getConfig().USE_INTERVAL = newValue)
+                        .setTooltip(Text.translatable(String.format("tooltip.%s.use_interval", MOD_ID)))
+                        .setSaveConsumer(newValue -> config.USE_INTERVAL = newValue)
                         .build()
         );
 
         useCategory.addEntry(
                 entryBuilder.startBooleanToggle(
                                 Text.translatable(
-                                        String.format("option.%s.use_sync", Syncac.MOD_ID)
+                                        String.format("option.%s.use_sync", MOD_ID)
                                 ),
-                                AutoConfig.getConfigHolder(ModConfig.class).getConfig().USE_SYNC_ENABLED
+                                config.USE_SYNC_ENABLED
                         )
                         .setDefaultValue(true)
-                        .setTooltip(Text.translatable(String.format("tooltip.%s.use_sync", Syncac.MOD_ID)))
-                        .setSaveConsumer(newValue -> AutoConfig.getConfigHolder(ModConfig.class).getConfig().USE_SYNC_ENABLED = newValue)
+                        .setTooltip(Text.translatable(String.format("tooltip.%s.use_sync", MOD_ID)))
+                        .setSaveConsumer(newValue -> config.USE_SYNC_ENABLED = newValue)
                         .build()
         );
 

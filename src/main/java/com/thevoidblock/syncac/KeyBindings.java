@@ -1,7 +1,5 @@
 package com.thevoidblock.syncac;
 
-import com.thevoidblock.syncac.client.SyncacClient;
-import com.thevoidblock.syncac.config.ModConfig;
 import com.thevoidblock.syncac.gui.ConfigScreen;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -24,7 +22,7 @@ public class KeyBindings {
         ClientTickEvents.END_CLIENT_TICK.register(
                 client -> {
                     while(openMenu.wasPressed()) {
-                        SyncacClient.CLIENT.setScreen(ConfigScreen.getConfigScreen(client.currentScreen));
+                        Syncac.CLIENT.setScreen(ConfigScreen.getConfigScreen(client.currentScreen));
                     }
 
                 }
@@ -34,13 +32,13 @@ public class KeyBindings {
         ClientTickEvents.END_CLIENT_TICK.register(
                 client -> {
                     while(toggleMod.wasPressed()) {
-                        AutoConfig.getConfigHolder(ModConfig.class).getConfig().MOD_ENABLED = !AutoConfig.getConfigHolder(ModConfig.class).getConfig().MOD_ENABLED;
-                        AutoConfig.getConfigHolder(ModConfig.class).save();
+                        AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().MOD_ENABLED = !AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().MOD_ENABLED;
+                        AutoConfig.getConfigHolder(SyncacConfig.class).save();
 
                         assert client.player != null;
                         client.player.sendMessage(Text.literal(
                                 String.format("Mod Enabled: %s",
-                                        Boolean.toString(AutoConfig.getConfigHolder(ModConfig.class).getConfig().MOD_ENABLED).toUpperCase()
+                                        Boolean.toString(AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().MOD_ENABLED).toUpperCase()
                                 )
                         ), true);
                     }
@@ -52,14 +50,14 @@ public class KeyBindings {
         ClientTickEvents.END_CLIENT_TICK.register(
                 client -> {
                     while(toggleAttack.wasPressed()) {
-                        AutoConfig.getConfigHolder(ModConfig.class).getConfig().ATTACK_ENABLED = !AutoConfig.getConfigHolder(ModConfig.class).getConfig().ATTACK_ENABLED;
-                        AutoConfig.getConfigHolder(ModConfig.class).save();
+                        AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().ATTACK_ENABLED = !AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().ATTACK_ENABLED;
+                        AutoConfig.getConfigHolder(SyncacConfig.class).save();
 
                         assert client.player != null;
                         client.player.sendMessage(Text.literal(
                                 String.format("Attack Mode: %s, With an Interval of: %s",
-                                        AutoConfig.getConfigHolder(ModConfig.class).getConfig().ATTACK_ENABLED.toString().toUpperCase(),
-                                        AutoConfig.getConfigHolder(ModConfig.class).getConfig().ATTACK_INTERVAL
+                                        AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().ATTACK_ENABLED.toString().toUpperCase(),
+                                        AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().ATTACK_INTERVAL
                                 )
                         ), true);
                     }
@@ -71,14 +69,14 @@ public class KeyBindings {
         ClientTickEvents.END_CLIENT_TICK.register(
                 client -> {
                     while(toggleUse.wasPressed()) {
-                        AutoConfig.getConfigHolder(ModConfig.class).getConfig().USE_ENABLED = !AutoConfig.getConfigHolder(ModConfig.class).getConfig().USE_ENABLED;
-                        AutoConfig.getConfigHolder(ModConfig.class).save();
+                        AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().USE_ENABLED = !AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().USE_ENABLED;
+                        AutoConfig.getConfigHolder(SyncacConfig.class).save();
 
                         assert client.player != null;
                         client.player.sendMessage(Text.literal(
                                 String.format("Use Mode: %s, With an Interval of: %s",
-                                        AutoConfig.getConfigHolder(ModConfig.class).getConfig().USE_ENABLED.toString().toUpperCase(),
-                                        AutoConfig.getConfigHolder(ModConfig.class).getConfig().USE_INTERVAL
+                                        AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().USE_ENABLED.toString().toUpperCase(),
+                                        AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().USE_INTERVAL
                                 )
                         ), true);
                     }

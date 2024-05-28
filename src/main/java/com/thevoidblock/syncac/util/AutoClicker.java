@@ -1,6 +1,7 @@
 package com.thevoidblock.syncac.util;
 
-import com.thevoidblock.syncac.config.*;
+import com.thevoidblock.syncac.SyncacConfig;
+import com.thevoidblock.syncac.autoclicker.*;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
@@ -23,7 +24,7 @@ public class AutoClicker {
         ClientTickEvents.END_CLIENT_TICK.register(
                 client -> {
 
-                    ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+                    SyncacConfig config = AutoConfig.getConfigHolder(SyncacConfig.class).getConfig();
 
                     if (config.MOD_ENABLED && clicker.isEnabled()) {
 
