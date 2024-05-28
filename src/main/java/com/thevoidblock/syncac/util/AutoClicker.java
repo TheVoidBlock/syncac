@@ -4,6 +4,7 @@ import com.thevoidblock.syncac.config.*;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
+import static java.lang.System.nanoTime;
 import static com.thevoidblock.syncac.util.GetCarpetLoggerInfo.getTPS;
 
 public class AutoClicker {
@@ -13,24 +14,27 @@ public class AutoClicker {
         AutoClicker.registerAutoClicker(new UseAutoClicker());
     }
 
+    private static final long TICK_TO_NANO = 50_000_000;
+
     public static void registerAutoClicker(AutoClickerConfig clicker) {
+
+        clicker.startTime = nanoTime();
 
         ClientTickEvents.END_CLIENT_TICK.register(
                 client -> {
 
-                    clicker.syncInterval = clicker.getInterval();
+                    ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
-                    if (clicker.isEnabled() && AutoConfig.getConfigHolder(ModConfig.class).getConfig().MOD_ENABLED) {
+                    if (config.MOD_ENABLED && clicker.isEnabled()) {
 
-                        if(clicker.isSync()) clicker.syncInterval = (int) Math.max(clicker.getInterval() *(20/getTPS()), clicker.syncInterval);
+                        if(clicker.isSync())
+                            if(getTPS() <= 20) clicker.syncInterval = (int) Math.max(clicker.getInterval() *(20/getTPS()), clicker.syncInterval);
+                            else clicker.syncInterval = (int) Math.min(clicker.getInterval() *(20/getTPS()), clicker.syncInterval);
 
-                        if (clicker.timeElapsed >= clicker.syncInterval) {
-
+                        if ((nanoTime() - clicker.startTime) >= clicker.syncInterval* TICK_TO_NANO) {
                             clicker.run();
-                            clicker.timeElapsed = 0;
-
-                        } else {
-                            clicker.timeElapsed++;
+                            clicker.syncInterval = clicker.getInterval();
+                            clicker.startTime = nanoTime();
                         }
                     }
 
