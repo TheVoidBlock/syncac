@@ -1,9 +1,10 @@
 package com.thevoidblock.syncac.autoclicker;
 
 import com.thevoidblock.syncac.SyncacConfig;
-import com.thevoidblock.syncac.Syncac;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.util.Hand;
+
+import static com.thevoidblock.syncac.Syncac.CLIENT;
 
 public class AttackAutoClicker extends AutoClickerConfig {
 
@@ -24,12 +25,12 @@ public class AttackAutoClicker extends AutoClickerConfig {
 
     @Override
     public void run() {
-        if(Syncac.CLIENT.player != null) {
-            if (Syncac.CLIENT.targetedEntity != null) {
-                assert Syncac.CLIENT.interactionManager != null;
-                Syncac.CLIENT.interactionManager.attackEntity(Syncac.CLIENT.player, Syncac.CLIENT.targetedEntity);
+        if(CLIENT.player != null) {
+            if (CLIENT.targetedEntity != null) {
+                assert CLIENT.interactionManager != null;
+                CLIENT.interactionManager.attackEntity(CLIENT.player, CLIENT.targetedEntity);
             }
-            Syncac.CLIENT.player.swingHand(Hand.MAIN_HAND);
+            CLIENT.player.swingHand(Hand.MAIN_HAND);
         }
     }
 }
