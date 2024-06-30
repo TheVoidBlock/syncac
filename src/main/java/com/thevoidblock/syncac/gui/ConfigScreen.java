@@ -20,7 +20,7 @@ public class ConfigScreen {
         
         ConfigBuilder builder = ConfigBuilder.create()
                 .setParentScreen(parent)
-                .setTitle(Text.translatable(String.format("autoclicker.%s.autoclicker", MOD_ID)));
+                .setTitle(Text.translatable(String.format("autoclicker.%s.config", MOD_ID)));
 
         builder.setSavingRunnable(() -> AutoConfig.getConfigHolder(SyncacConfig.class).save());
 
