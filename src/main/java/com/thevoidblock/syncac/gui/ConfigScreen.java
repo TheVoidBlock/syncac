@@ -58,6 +58,7 @@ public class ConfigScreen {
                                 ),
                                 config.TPS_FINDER_REGEX
                         )
+                        .setTooltip(Text.translatable(String.format("tooltip.%s.general_regex", MOD_ID)))
                         .setDefaultValue("TPS: (?<tps>[0-9]+[\\.,][0-9]) MSPT: (?<mspt>[0-9]+[\\.,][0-9])")
                         .setSaveConsumer(newValue -> {
                             config.TPS_FINDER_REGEX = newValue;
