@@ -7,6 +7,8 @@
 
 
   "option.syncac.general_active": "Enable Mod",
+  "option.syncac.general_regex": "TPS Finder Regex",
+  "tooltip.syncac.general_regex": "This will be the regex used for finding the server TPS in the player list footer.\nThis will NOT work if the tps is in the header.\n(NOTE: The MSPT field doesn't actually do anything. It's just there for in the future I might wanna add something)",
 
 
   "option.syncac.attack_active": "Enable Attack",
