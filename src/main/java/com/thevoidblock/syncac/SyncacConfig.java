@@ -6,6 +6,7 @@ import me.shedaniel.autoconfig.annotation.Config;
 @Config(name = Syncac.MOD_ID)
 public class SyncacConfig implements ConfigData {
     public boolean MOD_ENABLED = true;
+    public String TPS_FINDER_REGEX = "TPS: (?<tps>[0-9]+[\\.,][0-9]) MSPT: (?<mspt>[0-9]+[\\.,][0-9])";
 
     public Boolean ATTACK_ENABLED = false;
     public Integer ATTACK_INTERVAL = 20;

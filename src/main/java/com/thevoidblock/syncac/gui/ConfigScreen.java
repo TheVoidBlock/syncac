@@ -1,12 +1,15 @@
 package com.thevoidblock.syncac.gui;
 
 import com.thevoidblock.syncac.SyncacConfig;
+import com.thevoidblock.syncac.util.GetCarpetLoggerInfo;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
+
+import java.util.regex.Pattern;
 
 import static com.thevoidblock.syncac.Syncac.MOD_ID;
 
@@ -45,6 +48,21 @@ public class ConfigScreen {
                         )
                         .setDefaultValue(false)
                         .setSaveConsumer(newValue -> config.MOD_ENABLED = newValue)
+                        .build()
+        );
+
+        generalCategory.addEntry(
+                entryBuilder.startStrField(
+                                Text.translatable(
+                                        String.format("option.%s.general_regex", MOD_ID)
+                                ),
+                                config.TPS_FINDER_REGEX
+                        )
+                        .setDefaultValue("TPS: (?<tps>[0-9]+[\\.,][0-9]) MSPT: (?<mspt>[0-9]+[\\.,][0-9])")
+                        .setSaveConsumer(newValue -> {
+                            config.TPS_FINDER_REGEX = newValue;
+                            GetCarpetLoggerInfo.PATTERN_CARPET_TPS = Pattern.compile(newValue);
+                        })
                         .build()
         );
 

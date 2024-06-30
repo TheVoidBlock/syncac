@@ -1,6 +1,8 @@
 package com.thevoidblock.syncac.util;
 
+import com.thevoidblock.syncac.SyncacConfig;
 import com.thevoidblock.syncac.mixin.PlayerListHudAccessor;
+import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.text.Text;
 
 import java.util.regex.Matcher;
@@ -10,9 +12,11 @@ import static com.thevoidblock.syncac.Syncac.CLIENT;
 
 public class GetCarpetLoggerInfo {
 
-    private static final Pattern PATTERN_CARPET_TPS = Pattern.compile("TPS: (?<tps>[0-9]+[\\.,][0-9]) MSPT: (?<mspt>[0-9]+[\\.,][0-9])");
+    private static final SyncacConfig config = AutoConfig.getConfigHolder(SyncacConfig.class).getConfig();
+    public static Pattern PATTERN_CARPET_TPS = Pattern.compile(config.TPS_FINDER_REGEX);
 
     private static double getCarpetTPSLoggerInfo(String group) {
+
         Text playerListFooter = ((PlayerListHudAccessor) CLIENT.inGameHud.getPlayerListHud()).getFooter();
 
         if(playerListFooter != null) {
