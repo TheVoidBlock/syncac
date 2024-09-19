@@ -26,7 +26,11 @@ public class UseAutoClicker extends AutoClickerConfig {
     @Override
     public void run() {
         if (CLIENT.player != null)
-            if (!CLIENT.player.isUsingItem())
-                ((MinecraftClientInvoker)CLIENT).invokeDoItemUse();
+            if (!CLIENT.player.isUsingItem()) {
+                SyncacConfig config = AutoConfig.getConfigHolder(SyncacConfig.class).getConfig();
+                ((MinecraftClientInvoker) CLIENT).invokeDoItemUse();
+                assert CLIENT.interactionManager != null;
+                if(!config.USE_HOLD_ENABLED) CLIENT.interactionManager.stopUsingItem(CLIENT.player);
+            }
     }
 }
