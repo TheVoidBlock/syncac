@@ -4,10 +4,13 @@
   "package": "com.thevoidblock.syncac.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "PlayerListHudAccessor",
-    "MinecraftClientInvoker"
+    "MinecraftClientInvoker",
+    "PlayerListHudAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "client": [
+    "MinecraftClientMixin"
+  ]
 }

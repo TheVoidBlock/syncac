@@ -133,6 +133,18 @@ public class ConfigScreen {
         useCategory.addEntry(
                 entryBuilder.startBooleanToggle(
                                 Text.translatable(
+                                        String.format("option.%s.use_hold", MOD_ID)
+                                ), config.USE_HOLD_ENABLED
+                        )
+                        .setDefaultValue(false)
+                        .setTooltip(Text.translatable(String.format("tooltip.%s.use_hold", MOD_ID)))
+                        .setSaveConsumer(newValue -> config.USE_HOLD_ENABLED = newValue)
+                        .build()
+        );
+
+        useCategory.addEntry(
+                entryBuilder.startBooleanToggle(
+                                Text.translatable(
                                         String.format("option.%s.use_sync", MOD_ID)
                                 ),
                                 config.USE_SYNC_ENABLED

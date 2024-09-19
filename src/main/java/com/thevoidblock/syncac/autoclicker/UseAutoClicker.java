@@ -1,9 +1,10 @@
 package com.thevoidblock.syncac.autoclicker;
 
 import com.thevoidblock.syncac.SyncacConfig;
-import com.thevoidblock.syncac.Syncac;
 import com.thevoidblock.syncac.mixin.MinecraftClientInvoker;
 import me.shedaniel.autoconfig.AutoConfig;
+
+import static com.thevoidblock.syncac.Syncac.CLIENT;
 
 public class UseAutoClicker extends AutoClickerConfig {
 
@@ -24,7 +25,8 @@ public class UseAutoClicker extends AutoClickerConfig {
 
     @Override
     public void run() {
-        if (Syncac.CLIENT.player != null)
-            ((MinecraftClientInvoker) Syncac.CLIENT).invokeDoItemUse();
+        if (CLIENT.player != null)
+            if (!CLIENT.player.isUsingItem())
+                ((MinecraftClientInvoker)CLIENT).invokeDoItemUse();
     }
 }

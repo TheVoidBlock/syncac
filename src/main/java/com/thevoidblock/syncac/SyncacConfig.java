@@ -15,4 +15,5 @@ public class SyncacConfig implements ConfigData {
     public Boolean USE_ENABLED = false;
     public Integer USE_INTERVAL = 20;
     public Boolean USE_SYNC_ENABLED = true;
+    public Boolean USE_HOLD_ENABLED = false;
 }
