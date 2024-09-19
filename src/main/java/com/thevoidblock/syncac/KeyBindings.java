@@ -36,10 +36,9 @@ public class KeyBindings {
                         AutoConfig.getConfigHolder(SyncacConfig.class).save();
 
                         assert client.player != null;
-                        client.player.sendMessage(Text.literal(
-                                String.format("Mod Enabled: %s",
-                                        Boolean.toString(AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().MOD_ENABLED).toUpperCase()
-                                )
+                        client.player.sendMessage(Text.translatable(
+                                "alert.syncac.toggle_syncac",
+                                Boolean.toString(AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().MOD_ENABLED).toUpperCase()
                         ), true);
                     }
 
@@ -54,11 +53,10 @@ public class KeyBindings {
                         AutoConfig.getConfigHolder(SyncacConfig.class).save();
 
                         assert client.player != null;
-                        client.player.sendMessage(Text.literal(
-                                String.format("Attack Mode: %s, With an Interval of: %s",
-                                        AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().ATTACK_ENABLED.toString().toUpperCase(),
-                                        AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().ATTACK_INTERVAL
-                                )
+                        client.player.sendMessage(Text.translatable(
+                                "alert.syncac.toggle_attack",
+                                    AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().ATTACK_ENABLED.toString().toUpperCase(),
+                                    AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().ATTACK_INTERVAL
                         ), true);
                     }
 
@@ -73,11 +71,10 @@ public class KeyBindings {
                         AutoConfig.getConfigHolder(SyncacConfig.class).save();
 
                         assert client.player != null;
-                        client.player.sendMessage(Text.literal(
-                                String.format("Use Mode: %s, With an Interval of: %s",
-                                        AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().USE_ENABLED.toString().toUpperCase(),
-                                        AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().USE_INTERVAL
-                                )
+                        client.player.sendMessage(Text.translatable(
+                                "alert.syncac.toggle_use",
+                                AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().USE_ENABLED.toString().toUpperCase(),
+                                AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().USE_INTERVAL
                         ), true);
                     }
 

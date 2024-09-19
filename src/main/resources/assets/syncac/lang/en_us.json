@@ -25,6 +25,9 @@
   "option.syncac.use_interval": "Interval",
   "tooltip.syncac.use_interval": "Sets the delay between uses (in ticks)",
 
+  "option.syncac.use_hold": "Hold",
+  "tooltip.syncac.use_hold": "Emulates holding down the use button.",
+
   "option.syncac.use_sync": "Sync",
   "tooltip.syncac.use_sync": "Synchronizes the delay between uses with Carpet Mod Log TPS in the player list Footer, in case the server is lagging/slowed down",
 
@@ -32,6 +35,11 @@
   "key.syncac.main": "Syncac",
   "key.syncac.toggle_use": "Toggle Use",
   "key.syncac.toggle_attack": "Toggle Attack",
-  "key.syncac.toggle_mod": "Toggle Mod",
-  "key.syncac.open_menu": "Open Menu"
+  "key.syncac.toggle_mod": "Toggle Syncac",
+  "key.syncac.open_menu": "Open Menu",
+
+
+  "alert.syncac.toggle_syncac": "Syncac enabled: %s",
+  "alert.syncac.toggle_use": "Syncac use: %s, with an interval of: %s",
+  "alert.syncac.toggle_attack": "Syncac attack: %s, with an interval of: %s"
 }
