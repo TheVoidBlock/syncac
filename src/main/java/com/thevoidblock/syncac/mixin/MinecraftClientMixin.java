@@ -20,7 +20,7 @@ public class MinecraftClientMixin {
     )
     private boolean overrideIfCondition(KeyBinding useKey) {
         SyncacConfig config = AutoConfig.getConfigHolder(SyncacConfig.class).getConfig();
-        if(config.USE_ENABLED && config.USE_HOLD_ENABLED) return true;
+        if(config.MOD_ENABLED && config.USE_ENABLED && config.USE_HOLD_ENABLED) return true;
         return useKey.isPressed();
     }
 }
