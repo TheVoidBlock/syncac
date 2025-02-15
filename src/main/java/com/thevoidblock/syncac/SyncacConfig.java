@@ -9,11 +9,11 @@ public class SyncacConfig implements ConfigData {
     public String TPS_FINDER_REGEX = "TPS: (?<tps>[0-9]+[\\.,][0-9]) MSPT: (?<mspt>[0-9]+[\\.,][0-9])";
 
     public Boolean ATTACK_ENABLED = false;
-    public Integer ATTACK_INTERVAL = 20;
+    public Integer ATTACK_INTERVAL = 10;
     public Boolean ATTACK_SYNC_ENABLED = true ;
 
     public Boolean USE_ENABLED = false;
-    public Integer USE_INTERVAL = 20;
+    public Integer USE_INTERVAL = 10;
     public Boolean USE_SYNC_ENABLED = true;
     public Boolean USE_HOLD_ENABLED = false;
 }
