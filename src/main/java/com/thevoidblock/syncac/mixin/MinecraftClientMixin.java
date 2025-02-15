@@ -1,7 +1,7 @@
 package com.thevoidblock.syncac.mixin;
 
+import com.thevoidblock.syncac.Syncac;
 import com.thevoidblock.syncac.SyncacConfig;
-import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,8 +19,8 @@ public class MinecraftClientMixin {
             )
     )
     private boolean overrideIfCondition(KeyBinding useKey) {
-        SyncacConfig config = AutoConfig.getConfigHolder(SyncacConfig.class).getConfig();
-        if(config.MOD_ENABLED && config.USE_ENABLED && config.USE_HOLD_ENABLED) return true;
+        SyncacConfig config = Syncac.getConfig();
+        if(config.modEnabled && config.useEnabled && config.useHold) return true;
         return useKey.isPressed();
     }
 }

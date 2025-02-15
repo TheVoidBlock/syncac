@@ -1,8 +1,8 @@
 package com.thevoidblock.syncac.util;
 
+import com.thevoidblock.syncac.Syncac;
 import com.thevoidblock.syncac.SyncacConfig;
 import com.thevoidblock.syncac.autoclicker.*;
-import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
 import static java.lang.System.nanoTime;
@@ -24,9 +24,9 @@ public class AutoClicker {
         ClientTickEvents.END_CLIENT_TICK.register(
                 client -> {
 
-                    SyncacConfig config = AutoConfig.getConfigHolder(SyncacConfig.class).getConfig();
+                    SyncacConfig config = Syncac.getConfig();
 
-                    if (config.MOD_ENABLED && clicker.isEnabled()) {
+                    if (config.modEnabled && clicker.isEnabled()) {
 
                         if(clicker.isSync())
                             if(getTPS() <= 20) clicker.syncInterval = (int) Math.max(clicker.getInterval() *(20/getTPS()), clicker.syncInterval);

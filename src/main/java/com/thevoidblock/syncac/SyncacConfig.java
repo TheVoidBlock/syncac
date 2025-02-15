@@ -2,18 +2,42 @@ package com.thevoidblock.syncac;
 
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
+import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
 @Config(name = Syncac.MOD_ID)
 public class SyncacConfig implements ConfigData {
-    public boolean MOD_ENABLED = true;
-    public String TPS_FINDER_REGEX = "TPS: (?<tps>[0-9]+[\\.,][0-9]) MSPT: (?<mspt>[0-9]+[\\.,][0-9])";
+    @ConfigEntry.Category("general")
+    public boolean modEnabled = true;
 
-    public Boolean ATTACK_ENABLED = false;
-    public Integer ATTACK_INTERVAL = 10;
-    public Boolean ATTACK_SYNC_ENABLED = true ;
+    @ConfigEntry.Category("general")
+    @ConfigEntry.Gui.Tooltip
+    public String tpsFinderRegex = "TPS: (?<tps>[0-9]+[\\.,][0-9]) MSPT: (?<mspt>[0-9]+[\\.,][0-9])";
 
-    public Boolean USE_ENABLED = false;
-    public Integer USE_INTERVAL = 10;
-    public Boolean USE_SYNC_ENABLED = true;
-    public Boolean USE_HOLD_ENABLED = false;
+
+    @ConfigEntry.Category("attack")
+    public Boolean attackEnabled = false;
+
+    @ConfigEntry.Category("attack")
+    @ConfigEntry.Gui.Tooltip
+    public Integer attackInterval = 10;
+
+    @ConfigEntry.Category("attack")
+    @ConfigEntry.Gui.Tooltip
+    public Boolean attackSync = true;
+
+
+    @ConfigEntry.Category("use")
+    public Boolean useEnabled = false;
+
+    @ConfigEntry.Category("use")
+    @ConfigEntry.Gui.Tooltip
+    public Integer useInterval = 10;
+
+    @ConfigEntry.Category("use")
+    @ConfigEntry.Gui.Tooltip
+    public Boolean useSync = true;
+
+    @ConfigEntry.Category("use")
+    @ConfigEntry.Gui.Tooltip
+    public Boolean useHold = false;
 }

@@ -1,8 +1,7 @@
 package com.thevoidblock.syncac.autoclicker;
 
-import com.thevoidblock.syncac.SyncacConfig;
+import com.thevoidblock.syncac.Syncac;
 import com.thevoidblock.syncac.mixin.MinecraftClientInvoker;
-import me.shedaniel.autoconfig.AutoConfig;
 
 import static com.thevoidblock.syncac.Syncac.CLIENT;
 
@@ -10,27 +9,26 @@ public class UseAutoClicker extends AutoClickerConfig {
 
     @Override
     public boolean isEnabled() {
-        return AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().USE_ENABLED;
+        return Syncac.getConfig().useEnabled;
     }
 
     @Override
     public int getInterval() {
-        return AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().USE_INTERVAL;
+        return Syncac.getConfig().useInterval;
     }
 
     @Override
     public boolean isSync() {
-        return AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().USE_SYNC_ENABLED;
+        return Syncac.getConfig().useSync;
     }
 
     @Override
     public void run() {
         if (CLIENT.player != null)
             if (!CLIENT.player.isUsingItem()) {
-                SyncacConfig config = AutoConfig.getConfigHolder(SyncacConfig.class).getConfig();
                 ((MinecraftClientInvoker) CLIENT).invokeDoItemUse();
                 assert CLIENT.interactionManager != null;
-                if(!config.USE_HOLD_ENABLED) CLIENT.interactionManager.stopUsingItem(CLIENT.player);
+                if(!Syncac.getConfig().useHold) CLIENT.interactionManager.stopUsingItem(CLIENT.player);
             }
     }
 }

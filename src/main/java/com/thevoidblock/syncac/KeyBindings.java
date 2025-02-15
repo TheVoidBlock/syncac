@@ -1,7 +1,5 @@
 package com.thevoidblock.syncac;
 
-import com.thevoidblock.syncac.gui.ConfigScreen;
-import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.option.KeyBinding;
@@ -22,7 +20,7 @@ public class KeyBindings {
         ClientTickEvents.END_CLIENT_TICK.register(
                 client -> {
                     while(openMenu.wasPressed()) {
-                        Syncac.CLIENT.setScreen(ConfigScreen.getConfigScreen(client.currentScreen));
+                        Syncac.CLIENT.setScreen(Syncac.getConfigScreen());
                     }
 
                 }
@@ -32,13 +30,13 @@ public class KeyBindings {
         ClientTickEvents.END_CLIENT_TICK.register(
                 client -> {
                     while(toggleMod.wasPressed()) {
-                        AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().MOD_ENABLED = !AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().MOD_ENABLED;
-                        AutoConfig.getConfigHolder(SyncacConfig.class).save();
+                        Syncac.getConfig().modEnabled = !Syncac.getConfig().modEnabled;
+                        Syncac.saveConfig();
 
                         assert client.player != null;
                         client.player.sendMessage(Text.translatable(
                                 "alert.syncac.toggle_syncac",
-                                Boolean.toString(AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().MOD_ENABLED).toUpperCase()
+                                Boolean.toString(Syncac.getConfig().modEnabled).toUpperCase()
                         ), true);
                     }
 
@@ -49,14 +47,14 @@ public class KeyBindings {
         ClientTickEvents.END_CLIENT_TICK.register(
                 client -> {
                     while(toggleAttack.wasPressed()) {
-                        AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().ATTACK_ENABLED = !AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().ATTACK_ENABLED;
-                        AutoConfig.getConfigHolder(SyncacConfig.class).save();
+                        Syncac.getConfig().attackEnabled = !Syncac.getConfig().attackEnabled;
+                        Syncac.saveConfig();
 
                         assert client.player != null;
                         client.player.sendMessage(Text.translatable(
                                 "alert.syncac.toggle_attack",
-                                    AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().ATTACK_ENABLED.toString().toUpperCase(),
-                                    AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().ATTACK_INTERVAL
+                                Syncac.getConfig().attackEnabled.toString().toUpperCase(),
+                                Syncac.getConfig().attackInterval
                         ), true);
                     }
 
@@ -67,14 +65,14 @@ public class KeyBindings {
         ClientTickEvents.END_CLIENT_TICK.register(
                 client -> {
                     while(toggleUse.wasPressed()) {
-                        AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().USE_ENABLED = !AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().USE_ENABLED;
-                        AutoConfig.getConfigHolder(SyncacConfig.class).save();
+                        Syncac.getConfig().useEnabled = !Syncac.getConfig().useEnabled;
+                        Syncac.saveConfig();
 
                         assert client.player != null;
                         client.player.sendMessage(Text.translatable(
                                 "alert.syncac.toggle_use",
-                                AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().USE_ENABLED.toString().toUpperCase(),
-                                AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().USE_INTERVAL
+                                Syncac.getConfig().useEnabled.toString().toUpperCase(),
+                                Syncac.getConfig().useInterval
                         ), true);
                     }
 

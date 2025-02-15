@@ -1,7 +1,6 @@
 package com.thevoidblock.syncac.autoclicker;
 
-import com.thevoidblock.syncac.SyncacConfig;
-import me.shedaniel.autoconfig.AutoConfig;
+import com.thevoidblock.syncac.Syncac;
 import net.minecraft.util.Hand;
 
 import static com.thevoidblock.syncac.Syncac.CLIENT;
@@ -10,17 +9,17 @@ public class AttackAutoClicker extends AutoClickerConfig {
 
     @Override
     public boolean isEnabled() {
-        return AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().ATTACK_ENABLED;
+        return Syncac.getConfig().attackEnabled;
     }
 
     @Override
     public int getInterval() {
-        return AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().ATTACK_INTERVAL;
+        return Syncac.getConfig().attackInterval;
     }
 
     @Override
     public boolean isSync() {
-        return AutoConfig.getConfigHolder(SyncacConfig.class).getConfig().ATTACK_SYNC_ENABLED;
+        return Syncac.getConfig().attackSync;
     }
 
     @Override

@@ -20,7 +20,7 @@
       "com.thevoidblock.syncac.Syncac"
     ],
     "modmenu": [
-      "com.thevoidblock.syncac.gui.ModMenuIntegration"
+      "com.thevoidblock.syncac.ModMenuIntegration"
     ]
   },
   "mixins": [

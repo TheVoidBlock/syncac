@@ -13,7 +13,7 @@ import static com.thevoidblock.syncac.Syncac.CLIENT;
 public class GetCarpetLoggerInfo {
 
     private static final SyncacConfig config = AutoConfig.getConfigHolder(SyncacConfig.class).getConfig();
-    public static Pattern PATTERN_CARPET_TPS = Pattern.compile(config.TPS_FINDER_REGEX);
+    public static Pattern PATTERN_CARPET_TPS = Pattern.compile(config.tpsFinderRegex);
 
     private static double getCarpetTPSLoggerInfo(String group) {
 
