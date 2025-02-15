@@ -7,28 +7,30 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
+import static com.thevoidblock.syncac.Syncac.MOD_ID;
+import static java.lang.String.format;
+
 public class KeyBindings {
+    public static String DEFAULT_CATEGORY = MOD_ID;
 
     public static KeyBinding toggleMod;
     public static KeyBinding toggleAttack;
     public static KeyBinding toggleUse;
     public static KeyBinding openMenu;
 
-    public static void registerModKeybindings() {
+    public static void registerKeybindings() {
 
-        openMenu = registerModKeyBinding("open_menu", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "main");
+        openMenu = registerKeyBinding("open_menu");
+        toggleMod = registerKeyBinding("toggle_mod");
+        toggleAttack = registerKeyBinding("toggle_attack");
+        toggleUse = registerKeyBinding("toggle_use");
+
         ClientTickEvents.END_CLIENT_TICK.register(
                 client -> {
                     while(openMenu.wasPressed()) {
                         Syncac.CLIENT.setScreen(Syncac.getConfigScreen());
                     }
 
-                }
-        );
-
-        toggleMod = registerModKeyBinding("toggle_mod", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "main");
-        ClientTickEvents.END_CLIENT_TICK.register(
-                client -> {
                     while(toggleMod.wasPressed()) {
                         Syncac.getConfig().modEnabled = !Syncac.getConfig().modEnabled;
                         Syncac.saveConfig();
@@ -40,12 +42,6 @@ public class KeyBindings {
                         ), true);
                     }
 
-                }
-        );
-
-        toggleAttack = registerModKeyBinding("toggle_attack", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "main");
-        ClientTickEvents.END_CLIENT_TICK.register(
-                client -> {
                     while(toggleAttack.wasPressed()) {
                         Syncac.getConfig().attackEnabled = !Syncac.getConfig().attackEnabled;
                         Syncac.saveConfig();
@@ -58,12 +54,6 @@ public class KeyBindings {
                         ), true);
                     }
 
-                }
-        );
-
-        toggleUse = registerModKeyBinding("toggle_use", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "main");
-        ClientTickEvents.END_CLIENT_TICK.register(
-                client -> {
                     while(toggleUse.wasPressed()) {
                         Syncac.getConfig().useEnabled = !Syncac.getConfig().useEnabled;
                         Syncac.saveConfig();
@@ -75,21 +65,18 @@ public class KeyBindings {
                                 Syncac.getConfig().useInterval
                         ), true);
                     }
-
                 }
         );
-
     }
 
-    private static KeyBinding registerModKeyBinding(String name, InputUtil.Type type, int key, String category) {
+    private static KeyBinding registerKeyBinding(String name) {
         return KeyBindingHelper.registerKeyBinding(
                 new KeyBinding(
-                    String.format("key.%s.%s", Syncac.MOD_ID, name),
-                    type,
-                    key,
-                    String.format("key.%s.%s", Syncac.MOD_ID, category)
+                    format("key.%s.%s", MOD_ID, name),
+                    InputUtil.Type.KEYSYM,
+                    GLFW.GLFW_KEY_UNKNOWN,
+                    format("key.%s.category.%s", MOD_ID, DEFAULT_CATEGORY)
             )
         );
     }
-
 }

@@ -20,7 +20,7 @@ public class Syncac implements ClientModInitializer {
         AutoConfig.register(SyncacConfig.class, JanksonConfigSerializer::new);
 
         AutoClicker.registerAutoClickers();
-        KeyBindings.registerModKeybindings();
+        KeyBindings.registerKeybindings();
 
         LOGGER.info("{} initialized!", MOD_ID);
     }
