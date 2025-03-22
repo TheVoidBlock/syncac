@@ -1,35 +1,32 @@
 package com.thevoidblock.syncac.autoclicker;
 
-import com.thevoidblock.syncac.Syncac;
-import net.minecraft.util.Hand;
+import com.thevoidblock.syncac.mixin.MinecraftClientInvoker;
 
 import static com.thevoidblock.syncac.Syncac.CLIENT;
+import static com.thevoidblock.syncac.Syncac.getConfig;
 
 public class AttackAutoClicker extends AutoClickerConfig {
 
     @Override
     public boolean isEnabled() {
-        return Syncac.getConfig().attackEnabled;
+        return getConfig().attackEnabled;
     }
 
     @Override
     public int getInterval() {
-        return Syncac.getConfig().attackInterval;
+        return getConfig().attackHold ? 0 : getConfig().attackInterval;
     }
 
     @Override
     public boolean isSync() {
-        return Syncac.getConfig().attackSync;
+        return getConfig().attackSync;
     }
 
     @Override
     public void run() {
-        if(CLIENT.player != null) {
-            if (CLIENT.targetedEntity != null) {
-                assert CLIENT.interactionManager != null;
-                CLIENT.interactionManager.attackEntity(CLIENT.player, CLIENT.targetedEntity);
-            }
-            CLIENT.player.swingHand(Hand.MAIN_HAND);
+        if(CLIENT.player != null && !CLIENT.player.isUsingItem()) {
+            ((MinecraftClientInvoker) CLIENT).invokeDoAttack();
+            ((MinecraftClientInvoker) CLIENT).invokeHandleBlockBreaking(getConfig().attackHold);
         }
     }
 }

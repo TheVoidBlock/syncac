@@ -25,6 +25,10 @@ public class SyncacConfig implements ConfigData {
     @ConfigEntry.Gui.Tooltip
     public Boolean attackSync = true;
 
+    @ConfigEntry.Category("attack")
+    @ConfigEntry.Gui.Tooltip
+    public Boolean attackHold = false;
+
 
     @ConfigEntry.Category("use")
     public Boolean useEnabled = false;

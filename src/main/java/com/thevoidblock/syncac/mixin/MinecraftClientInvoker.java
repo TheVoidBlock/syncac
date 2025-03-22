@@ -8,4 +8,11 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 public interface MinecraftClientInvoker {
     @Invoker("doItemUse")
     void invokeDoItemUse();
+
+    @SuppressWarnings("UnusedReturnValue")
+    @Invoker("doAttack")
+    boolean invokeDoAttack();
+
+    @Invoker("handleBlockBreaking")
+    void invokeHandleBlockBreaking(boolean breaking);
 }
