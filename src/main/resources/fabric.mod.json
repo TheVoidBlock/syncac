@@ -17,10 +17,10 @@
   "environment": "client",
   "entrypoints": {
     "client": [
-      "com.thevoidblock.syncac.Syncac"
+      "io.github.thevoidblock.syncac.Syncac"
     ],
     "modmenu": [
-      "com.thevoidblock.syncac.ModMenuIntegration"
+      "io.github.thevoidblock.syncac.ModMenuIntegration"
     ]
   },
   "mixins": [

@@ -1,12 +1,12 @@
-package com.thevoidblock.syncac.util;
+package io.github.thevoidblock.syncac.util;
 
-import com.thevoidblock.syncac.Syncac;
-import com.thevoidblock.syncac.SyncacConfig;
-import com.thevoidblock.syncac.autoclicker.*;
+import io.github.thevoidblock.syncac.Syncac;
+import io.github.thevoidblock.syncac.SyncacConfig;
+import io.github.thevoidblock.syncac.autoclicker.*;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 
 import static java.lang.System.nanoTime;
-import static com.thevoidblock.syncac.util.GetCarpetLoggerInfo.getTPS;
+import static io.github.thevoidblock.syncac.util.GetCarpetLoggerInfo.getTPS;
 
 public class AutoClicker {
 

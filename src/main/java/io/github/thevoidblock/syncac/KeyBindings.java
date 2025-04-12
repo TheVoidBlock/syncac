@@ -1,4 +1,4 @@
-package com.thevoidblock.syncac;
+package io.github.thevoidblock.syncac;
 
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -7,7 +7,7 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 import org.lwjgl.glfw.GLFW;
 
-import static com.thevoidblock.syncac.Syncac.MOD_ID;
+import static io.github.thevoidblock.syncac.Syncac.MOD_ID;
 import static java.lang.String.format;
 
 public class KeyBindings {

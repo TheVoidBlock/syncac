@@ -1,4 +1,4 @@
-package com.thevoidblock.syncac.mixin;
+package io.github.thevoidblock.syncac.mixin;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.Mouse;
@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import static com.thevoidblock.syncac.Syncac.getConfig;
+import static io.github.thevoidblock.syncac.Syncac.getConfig;
 
 @Mixin(Mouse.class)
 public class MouseMixin {

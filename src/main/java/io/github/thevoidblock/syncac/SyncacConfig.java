@@ -1,4 +1,4 @@
-package com.thevoidblock.syncac;
+package io.github.thevoidblock.syncac;
 
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;

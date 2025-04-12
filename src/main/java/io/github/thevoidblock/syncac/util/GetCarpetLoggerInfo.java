@@ -1,14 +1,14 @@
-package com.thevoidblock.syncac.util;
+package io.github.thevoidblock.syncac.util;
 
-import com.thevoidblock.syncac.SyncacConfig;
-import com.thevoidblock.syncac.mixin.PlayerListHudAccessor;
+import io.github.thevoidblock.syncac.SyncacConfig;
+import io.github.thevoidblock.syncac.mixin.PlayerListHudAccessor;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.minecraft.text.Text;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.thevoidblock.syncac.Syncac.CLIENT;
+import static io.github.thevoidblock.syncac.Syncac.CLIENT;
 
 public class GetCarpetLoggerInfo {
 

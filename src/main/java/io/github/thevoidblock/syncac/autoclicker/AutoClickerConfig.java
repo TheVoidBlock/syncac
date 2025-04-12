@@ -1,4 +1,4 @@
-package com.thevoidblock.syncac.autoclicker;
+package io.github.thevoidblock.syncac.autoclicker;
 
 public abstract class AutoClickerConfig {
 

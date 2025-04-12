@@ -1,4 +1,4 @@
-package com.thevoidblock.syncac.mixin;
+package io.github.thevoidblock.syncac.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.client.MinecraftClient;
@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import static com.thevoidblock.syncac.Syncac.getConfig;
+import static io.github.thevoidblock.syncac.Syncac.getConfig;
 
 @Mixin(MinecraftClient.class)
 public class MinecraftClientMixin {

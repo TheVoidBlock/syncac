@@ -1,9 +1,9 @@
-package com.thevoidblock.syncac.autoclicker;
+package io.github.thevoidblock.syncac.autoclicker;
 
-import com.thevoidblock.syncac.Syncac;
-import com.thevoidblock.syncac.mixin.MinecraftClientInvoker;
+import io.github.thevoidblock.syncac.Syncac;
+import io.github.thevoidblock.syncac.mixin.MinecraftClientInvoker;
 
-import static com.thevoidblock.syncac.Syncac.CLIENT;
+import static io.github.thevoidblock.syncac.Syncac.CLIENT;
 
 public class UseAutoClicker extends AutoClickerConfig {
 

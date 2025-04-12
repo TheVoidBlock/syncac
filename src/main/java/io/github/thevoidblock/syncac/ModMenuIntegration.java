@@ -1,4 +1,4 @@
-package com.thevoidblock.syncac;
+package io.github.thevoidblock.syncac;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;

@@ -1,4 +1,4 @@
-package com.thevoidblock.syncac.mixin;
+package io.github.thevoidblock.syncac.mixin;
 
 import net.minecraft.client.gui.hud.PlayerListHud;
 import net.minecraft.text.Text;

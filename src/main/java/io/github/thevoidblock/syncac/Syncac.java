@@ -1,6 +1,6 @@
-package com.thevoidblock.syncac;
+package io.github.thevoidblock.syncac;
 
-import com.thevoidblock.syncac.util.AutoClicker;
+import io.github.thevoidblock.syncac.util.AutoClicker;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ClientModInitializer;
