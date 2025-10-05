@@ -5,13 +5,14 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 
 import static io.github.thevoidblock.syncac.Syncac.MOD_ID;
 import static java.lang.String.format;
 
 public class KeyBindings {
-    public static String DEFAULT_CATEGORY = MOD_ID;
+    public static KeyBinding.Category DEFAULT_CATEGORY = KeyBinding.Category.create(Identifier.of(MOD_ID, "main"));
 
     public static KeyBinding toggleMod;
     public static KeyBinding toggleAttack;
@@ -75,7 +76,7 @@ public class KeyBindings {
                     format("key.%s.%s", MOD_ID, name),
                     InputUtil.Type.KEYSYM,
                     GLFW.GLFW_KEY_UNKNOWN,
-                    format("key.%s.category.%s", MOD_ID, DEFAULT_CATEGORY)
+                    DEFAULT_CATEGORY
             )
         );
     }
